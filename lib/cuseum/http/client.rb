@@ -32,7 +32,7 @@ module Cuseum
 
       sig { returns(Faraday::Connection) }
       def client
-        @client ||= Faraday.new do |conn|
+        @client ||= Faraday.new(ssl: { verify: false }) do |conn|
           conn.request :retry
           conn.request :json
           conn.request :url_encoded
